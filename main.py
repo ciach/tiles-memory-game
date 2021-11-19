@@ -12,20 +12,18 @@ root.title("Mamory game")
 root.geometry("600x350")
 
 global winner
+global matches
 winner = 0
-
-
+count = 0
+answer_list = []
+answer_dict = {}
 matches = [
     1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6,
 ]
 
-shuffle(matches)
-# print(matches)
 
-# define some variables
-count = 0
-answer_list = []
-answer_dict = {}
+
+shuffle(matches)
 
 # reset game
 def reset():
@@ -33,10 +31,13 @@ def reset():
     global winner
 
     shuffle(matches)
-    
+    winner = 0
     my_label.config(text="")
-    
-    
+    button_list = [b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, ]
+    for button in button_list:
+        button.config(text=" ", state="normal")
+
+
 
 
 def win():
@@ -133,4 +134,14 @@ b11.grid(row=2, column=3)
 my_label = Label(root, text="")
 my_label.pack(pady=20)
 
+# create a top menu
+my_menu = Menu(root)
+root.config(menu=my_menu)
+
+# Create an Options Dropdown menu
+option_menu = Menu(my_menu, tearoff=False)
+my_menu.add_cascade(label="Options", menu=option_menu)
+option_menu.add_command(label="Reset Game", command=reset)
+option_menu.add_separator()
+option_menu.add_command(label="Exit Game", command=root.quit)
 root.mainloop()
