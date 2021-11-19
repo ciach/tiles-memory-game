@@ -1,5 +1,7 @@
 """
 Tile matching game tutorial: https://www.youtube.com/watch?v=tlMPVGSEEDw&
+Images comming from https://www.freepik.com
+
 """
 
 from tkinter import *
@@ -9,6 +11,8 @@ from time import sleep
 
 root = Tk()
 root.title("Mamory game")
+
+root.iconphoto(False, PhotoImage(file='images/main_window_icon.png'))
 root.geometry("600x350")
 
 global winner
