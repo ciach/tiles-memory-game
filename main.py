@@ -11,7 +11,6 @@ from time import sleep
 
 root = Tk()
 root.title("Mamory game")
-
 root.iconphoto(False, PhotoImage(file='images/main_window_icon.png'))
 root.geometry("600x350")
 
@@ -25,12 +24,26 @@ matches = [
     1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6,
 ]
 
-
-
 shuffle(matches)
 
 # reset game
 def reset():
+    """
+    Resets the game
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    None
+
+    Raises
+    ------
+    None
+
+    """
     global matches
     global winner
 
@@ -42,9 +55,23 @@ def reset():
         button.config(text=" ", state="normal")
 
 
-
-
 def win():
+    """
+    Print congratulations to the user and clear the buttons text
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    None
+
+    Raises
+    ------
+    None
+
+    """
     my_label.config(text="Congratulations! You win!")
     button_list = [b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, ]
     for button in button_list:
@@ -52,10 +79,27 @@ def win():
 
 
 def button_click(b, number):  # fun to click buitttons
+    """
+    Defines behaviour after clicking the button
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    None
+
+    Raises
+    ------
+    None
+
+    """
     global count
     global answer_dict
     global answer_list
     global winner
+    global photo
 
     if (b["text"] == ' ') and (count < 2):
         b["text"] = matches[number]
@@ -79,7 +123,6 @@ def button_click(b, number):  # fun to click buitttons
                 win()
         else:
             my_label.config(text="DOH!")
-
             count = 0
             answer_list = []
             messagebox.showinfo("inc!", "inc!")
@@ -92,6 +135,7 @@ def button_click(b, number):  # fun to click buitttons
 # create button frame
 my_frame = Frame(root)
 my_frame.pack(pady=10)
+
 
 # buttons def
 b0 = Button(my_frame, text=' ', font=("Helvetica", 20), height=3,
